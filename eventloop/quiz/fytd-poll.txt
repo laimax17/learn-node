@@ -1,1 +1,10 @@
 - In eventloop/poll.js, what will be the order of execution? Briefly explain the order of execution w.r.t the event loop phases.
+
+It start the main thread first. The order is someAsyncOperation() foo() console.log('done')
+Since in someAsyncOperation(), it is a IO operation. It will be put in eventloop. So the code will 
+go to foo() and then console.log(). After the main thread is completed, the operation in eventloop is executed.
+So the output is like this:
+
+foo
+done
+Read Error

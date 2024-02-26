@@ -1,3 +1,15 @@
 - Explain the order of execution in terms of the event loop for eventloop/poll_timer.js.
+
+someAsyncOperation is a callback function, and it has a IO operation. The setTimeout is a timer event.
+Both of them are put in event loop. It execute timeout first then someAsyncOperation.
+ But timeout takes time, so someAsyncOperation is executed first. And then the result in setTimeout is printed.
+
+
+
 - Will the order of execution change if the delay in the while loop is changed from 10s to 150s? Why or why not?
+
+No. The IO takes less time that timeout event.
+
 - Will the order of execution change if timeout is changed to 0? Why or why not?
+
+Yes. timeout takes less time that IO event.
